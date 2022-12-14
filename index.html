@@ -1,151 +1,726 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<title>Screen Controls</title>
-	<meta name="description" content="A-Frame Examples">
-	<script src="js/aframe-master.1.0.4.min.js"></script>
-	<script src="js/aframe-environment-component.min.js"></script>
-	<script src="js/extended-wasd-controls.js"></script>
-	<script src="js/joystick.js"></script>
-<style>
-
-body
-{
-	/* disable long press in iOS? */
-	-webkit-touch-callout: none;
-}
-
-.mainUI
-{
-	border: 0px solid pink; 
-	position: fixed; 
-	top: 0px;  
-	width:99%; 
-	height:99%; 
-	z-index: 1; 
-	pointer-events: none; /* allow click-through in transparent areas */
-}
-
-.regionUI
-{
-	border: 0px solid yellow;
-	position: absolute; 
-	display: flex;
-	flex-direction: row;
-	pointer-events: none;
-}
-
-.buttonUI
-{
-	border: 0px solid lime;
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	pointer-events: auto;	
-	filter: drop-shadow(0px 0px 20px white);
-}
-
-.skyColor
-{
-	filter: hue-rotate(240deg) saturate(100%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-.baseColor
-{
-	filter: hue-rotate(24deg) saturate(68%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-.grayColor
-{
-	filter: hue-rotate(0deg) saturate(0%) brightness(100%) drop-shadow(0px 0px 20px white);
-}
-
-</style>
-
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>cad-boxx.com</title>
+    <!--======= css here =======-->
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/slick.css">
+    <link rel="stylesheet" href="css/venobox.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
-
 <body>
+    <!--======= header-part start ======-->
+    <header class="header-part sticky">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="logo" href="index.html">
+                    <img src="images/cadboxx-logo.png" style="width:200px;height:75px"alt="white-logo">
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="index.html">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.html">about</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="service.html">service</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="project.html">project</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="team.html">Features</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Connections
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="https://GitHub.com">GitHub</a>
+                                <a class="dropdown-item" href="https://hubs.momzilla.com">Hubs</a>
+                                <a class="dropdown-item" href="https://sketchfab.com">Sketchfab</a>
+                                <a class="dropdown-item" href="https://glitch.com">Glitch</a>
 
-<!-- note: by using red base images for buttons, can tint (HSV) using filter: hue-rotate(); etc. -->
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="contact.html">contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <!--======= header-part end ======-->
+    </header>
+    <main>
+        <!--======= slider-part start =======-->
+        <section id="slider-part" class="slider-active">
+            <div class="single-slider overlay">
+                <div class="container">
+                    <div class="slider-content">
+                        <h5>We create and Assemble 3D Models and we give you a helping hand by access to our range of parametric models hosted on Sketcjfab.com</h5>
+                        <h5>Animation and Physics Simulation of your own models together with our owrange of parametric models on Sketchfab.</h5>
+                        <h5>Join us and we will show you how to combine the latest technology together with engineering knowledge and common sense to bring a new way of working that will save you huundreds of Hours per year..</h5>
+                        <a class="defult-btn" href="https://sketchfab.com/fasteng/">View Models</a>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slider-1 overlay">
+                <div class="container">
+                    <div class="slider-content">
+                        <h5>We work in Virtual-Reality</h5>
+                        <h5>All our models are Game/VR/AR-ready</h5>
+                        <h5>Choose between downnloading the models for use in other designs on a royalty-free basis and placing them directly into your scene from Sketchfab.</h5>
 
-<div class="mainUI" id="uiDiv" oncontextmenu="return false;">
-
-	<!-- top-left -->
-	<div class="regionUI skyColor" style="top: 10px; left: 10px;" oncontextmenu="return false;">
-	</div>
-
-	<!-- top-right -->
-	<div class="regionUI" style="top: 10px; right: 10px;">
-	</div>
-
-	<!-- bottom-left -->
-	<div class="regionUI" style="top: 10px; left: 10px;">
-		<div class="buttonUI" style="width: 128px;  opacity:0.80;">
-			<img src="images/joystick-base.png"/>
-			<div id="stick1" style="position: absolute; left:32px; top:32px;">
-			<img src="images/joystick-red.png"/>		
-			</div>
-		</div>
-	</div>
-
-	<!-- bottom-right -->
-	<div class="regionUI" style="top: 10px; right: 10px;">
-		<div class="buttonUI" style="width: 128px; opacity:0.80;">
-			<img src="images/joystick-base.png"/>
-			<div id="stick2" style="position: absolute; left:32px; top:32px;">
-			<img src="images/joystick-blue.png"/>		
-			</div>
-		</div>
-	</div>
-
-</div>
-
-<script>
-
-	// need to run javascript code after a-scene entities and components are loaded
-	AFRAME.registerComponent('screen-controls', 
-	{
-		init: function () 
-		{
-    		this.component = document.getElementById("camera").components["extended-wasd-controls"];
-    		this.joystick1 = new Joystick("stick1", 64, 8);
-    		this.joystick2 = new Joystick("stick2", 64, 8);
-  		},
-
-  		tick: function(time, deltaTime)
-  		{
-  			// console.log( joystick1.value )
-  			// console.log( this.component.movePercent )
-  			this.component.movePercent.x   =  this.joystick1.value.x;
-  			this.component.movePercent.z   = -this.joystick1.value.y;
-  			this.component.rotatePercent.x = -this.joystick2.value.y;
-  			this.component.rotatePercent.y = -this.joystick2.value.x;
-  			
-  			
-  		}
-	});
-
-
-</script>
-
-<!-- 
-	disable press "F" to enter fullscreen mode
-	disable WASD controls attached to default camera
- -->
-<a-scene 
-	environment="preset: contact; dressingAmount: 0; shadow: true;" 
-	keyboard-shortcuts="enterVR: false;" 
-	vr-mode-ui="enabled: false;"
-	screen-controls>
-	
-	<!-- no look controls; control angle with second joystick  -->
-	<a-entity id="camera" camera
-		position="0 1.6 0"
-		extended-wasd-controls="flyEnabled: true; inputType: joystick;">
-	</a-entity>
-	
-</a-scene>
-
+                        <a class="defult-btn" href="https://cad-boxx.com">Visit Store</a>
+                    </div>
+                </div>
+            </div>
+            <div class="single-slider-2 overlay">
+                <div class="container">
+                    <div class="slider-content">
+                        <h5>Snap-together Model Assembly with Constraints.</h5>
+                        <h5>No need to define every constraint. Just place & Adjust.</h5>
+                        <a class="defult-btn" href="https://cadboxxapp.netlify.app">get started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= slider-part end =======-->
+        <!--======= about-part start =======-->
+        <section id="about-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="about-img">
+                            <div class="about-men">
+                                <img src="images/about/about1.jpg" alt="about1">
+                            </div>
+                            <div class="about-laptop">
+                                <img src="images/about/about2.jpg" alt="about2">
+                                <div class="video-paly">
+                                    <a class="venobox" data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=weZOk9m-2eA"><i class="fas fa-play"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about-right">
+                            <div class="section-title">
+                                <h2>about us</h2>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                            </div>
+                            <div class="about-text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. sunt in culpa qui officia deserunt mollit anim id est laborum.Duis aute irure dolor in reprehenderit.</p>
+                                <p class="duis">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis</p>
+                                <a href="#" class="defult-btn">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= about-part end =======-->
+        <!--======= service-part start =======-->
+        <section id="service-part" class="gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>Our services</h2>
+                            <p>We design and create our own  models, but we do it in a way that means the componets assemble as easy as possible. Every model in our range can be used "as-is" or edited / momdified to suit a particular design.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <span class="flaticon-computer-graphic"></span>
+                            </div>
+                            <h3>3D Models</h3>
+                            <p> Sketchfab and the other 3D libraries offer good value products..</p>
+                            <a href="#" class="service-btn">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <span class="flaticon-code"></span>
+                            </div>
+                            <h3>Dynamic Joints</h3>
+                            <p> What is currently on offer on an industry-wide basis is astoundingly bad value. The equations that are solved in most simulation software were not devised or created by those who sell it, and they have been around for hundreds of years. They are open source.</p>
+                            <a href="#" class="service-btn">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <span class="flaticon-work-1"></span>
+                            </div>
+                            <h3>Assembly Process </h3>
+                            <p> We totally de-constructed the virtual assembly process as used by the "industry leaders" and looked in depth at what could be done for nothing with what was currently available. We then designed the system that we present here, and I can tell you: it is remarkable!</p>
+                            <a href="#" class="service-btn">read more <i class="fas fa-long-arrow-alt-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= service-part end =======-->
+        <!--======= team-part start =======--
+        <section id="team-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>our experts</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team">
+                            <div class="team-img">
+                                <img src="images/team/team2.jpg" alt="team1">
+                                <div class="team-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-info">
+                                <h4>ali banath</h4>
+                                <p>founder</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team">
+                            <div class="team-img">
+                                <img src="images/team/team10.jpg" alt="team5">
+                                <div class="team-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-info">
+                                <h4>Lucinda</h4>
+                                <p>worker</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team">
+                            <div class="team-img">
+                                <img src="images/team/team3.jpg" alt="team3">
+                                <div class="team-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-info">
+                                <h4> Braxton</h4>
+                                <p>senior worker</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="single-team">
+                            <div class="team-img">
+                                <img src="images/team/team9.jpg" alt="team7">
+                                <div class="team-icon">
+                                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                    <a href="#"><i class="fab fa-twitter"></i></a>
+                                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                </div>
+                            </div>
+                            <div class="team-info">
+                                <h4>Gretchen</h4>
+                                <p>SR. product engineer</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= team-part end =======-->
+        <!--======= project-part start =======-->
+        <section id="project-part" class="gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>Projects gallery</h2>
+                            <p>Our projects range from Mechanical Engineering to Application Development and we bring them together in our own unique style, appling theory of mechanics through the code and the way we write and construct it.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="project-button">
+                            <ul>
+                                <li data-filter="all">all</li>
+                                <li data-filter=".web">3D Models</li>
+                                <li data-filter=".grap">Assembly</li>
+                                <li data-filter=".dev">Dynamic Joints</li>
+                                <li data-filter=".net">Virtual Reality</li>
+                            </ul>
+                        </div>
+                        <div class="con row">
+                            <div class=" col-lg-4 col-sm-6 project-item mix grap web dev">
+                                <div class="project-inner">
+                                    <img class="project-img" src="https://cdn.glitch.global/2a3af8bb-e7b2-4e50-8ce2-68e3e8cf4538/cadboxx.png?v=1659434696690" alt="project1">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="https://cdn.glitch.global/2a3af8bb-e7b2-4e50-8ce2-68e3e8cf4538/cadboxx.png?v=1659434696690"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-6 project-item mix dev">
+                                <div class="project-inner">
+                                    <img class="project-img" src="images/project/bob-wheel.png" alt="project2">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="images/project/bob-wheel.png"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-6 project-item mix web grap net">
+                                <div class="project-inner">
+                                    <img class="project-img" src="images/project/inside.png" alt="project3">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="images/project/inside.png"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-6 project-item mix web dev">
+                                <div class="project-inner">
+                                    <img class="project-img" src="images/project/sfab.png" alt="project5">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="images/project/sfab.png"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-6 project-item mix web grap dev">
+                                <div class="project-inner">
+                                    <img class="project-img" src="images/project/uj.png" alt="project6">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="images/project/uj.png"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" col-lg-4 col-sm-6 project-item mix web net">
+                                <div class="project-inner">
+                                    <img class="project-img" src="images/project/steamvr.jpg" alt="project7">
+                                    <div class="project-link">
+                                        <a class="venobox" data-gall="gallery01" href="images/project/steamvr.jpg"><span class="flaticon-add"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= project-part end =======-->
+        <!--======= counter-part start =======--
+        <section id="counter-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>our some success</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter">
+                            <span class="flaticon-trophy counter-icon"></span>
+                            <h2 class="counter">250</h2>
+                            <p>awards win</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter">
+                            <span class="flaticon-happiness counter-icon"></span>
+                            <h2><span class="counter">2000</span>+</h2>
+                            <p>happy clients</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter">
+                            <span class="flaticon-work counter-icon"></span>
+                            <h2 class="counter">410</h2>
+                            <p>our worker</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6 col-6">
+                        <div class="single-counter">
+                            <span class="flaticon-project counter-icon"></span>
+                            <h2><span class="counter">3000</span>+</h2>
+                            <p>project done</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= counter-part end =======-->
+        <!--======= testimonial-part start =======--
+        <section id="testimonial-part" class="gray-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>Client Feedback</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 pr-0 pr">
+                        <div class="active-testimonial">
+                            <div class="testimonial-item d-flex align-items-center">
+                                <div class="testimonial-img">
+                                    <img src="images/testimonial/testimonial4.jpg" alt="testimonial4">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Audrey Anne</h4>
+                                    <span>Marketing Executive</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur facere explicabo totam molestias repudiandae in, nulla. Eos laboriosam, ut provident, quisquam voluptatibus perspiciatis ab ipsum soluta suscipit numquam!
+                                    </p>
+                                    <div class="star">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="quote">
+                                    <span class="flaticon-left-quotes-sign"></span>
+                                </div>
+                            </div>
+                            <div class="testimonial-item d-flex align-items-center">
+                                <div class="testimonial-img">
+                                    <img src="images/testimonial/testimonial5.jpg" alt="testimonial5">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Edward Ian</h4>
+                                    <span>founder</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur facere explicabo totam molestias repudiandae in, nulla. Eos laboriosam, ut provident, quisquam voluptatibus perspiciatis ab ipsum soluta suscipit numquam!
+                                    </p>
+                                    <div class="star">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half"></i>
+                                    </div>
+                                </div>
+                                <div class="quote">
+                                    <span class="flaticon-left-quotes-sign"></span>
+                                </div>
+                            </div>
+                            <div class="testimonial-item d-flex align-items-center">
+                                <div class="testimonial-img">
+                                    <img src="images/testimonial/testimonial6.jpg" alt="testimonial6">
+                                </div>
+                                <div class="testimonial-info">
+                                    <h4>Yvonne Joe</h4>
+                                    <span>maneger</span>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consectetur facere explicabo totam molestias repudiandae in, nulla. Eos laboriosam, ut provident, quisquam voluptatibus perspiciatis ab ipsum soluta suscipit numquam!
+                                    </p>
+                                    <div class="star">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                </div>
+                                <div class="quote">
+                                    <span class="flaticon-left-quotes-sign"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 pl-0 pl">
+                        <div class="testimonial-right">
+                            <img class="test" src="images/testimonial/testimonial1.jpg" alt="testimonial1">
+                            <img class="test-2" src="images/testimonial/testimonial2.jpg" alt="testimonial2">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= testimonial-part end =======--
+        <!--======= cta-part start =======--
+        <section id="cta-part" class="overlay">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="cta-title text-center">
+                            <h2>Come To Get World Class Business Service.</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                We are the first and trusted car repair company in your city.</p>
+                            <a href="contact.html" class="defult-btn">contact us</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= cta-part end =======-->
+        <!--======= blog-part start =======--
+        <section id="blog-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>latest news</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="blog-item">
+                            <div class="blog-img active-blog">
+                                <a href="#"><img src="images/blog/bolg-1.jpg" alt="bolg-1"></a>
+                                <a href="#"><img src="images/blog/bolg-2.jpg" alt="bolg-2"></a>
+                                <a href="#"><img src="images/blog/bolg-3.jpg" alt="bolg-3"></a>
+                            </div>
+                            <div class="blog-info">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>25 jun 2020</li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog-title">
+                                    <h2><a href="#">How to become a best sale marketer in a year</a></h2>
+                                </div>
+                                <p>Admiration has sir decisively excellence say everything inhabiting acceptance. Sooner settle add put you sudden him.</p>
+                                <a class="defult-btn sm-btn" href="#">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-item">
+                            <div class="blog-img blog-animation">
+                                <a href="#"><img src="images/blog/bolg-4.jpg" alt="bolg-4"></a>
+                                <div class="blog-video">
+                                    <a class="venobox" data-autoplay="true" data-vbtype="video" href="https://www.youtube.com/watch?v=LFCcTNWMIEQ"><i class="fas fa-play"></i></a>
+                                </div>
+                            </div>
+                            <div class="blog-info">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>25 nov 2020</li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog-title">
+                                    <h2><a href="#">How to become a best sale marketer in a year</a></h2>
+                                </div>
+                                <p>Admiration has sir decisively excellence say everything inhabiting acceptance. Sooner settle add put you sudden him.</p>
+                                <a class="defult-btn sm-btn" href="#">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="blog-item">
+                            <div class="blog-img">
+                                <a href="#"><img class="blog-thumb" src="images/blog/bolg-7.jpg" alt="bolg-7"></a>
+                            </div>
+                            <div class="blog-info">
+                                <div class="blog-meta">
+                                    <ul>
+                                        <li>10 aug 2020</li>
+                                        <li>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                            <i class="fas fa-star"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="blog-title">
+                                    <h2><a href="#">How to become a best sale marketer in a year</a></h2>
+                                </div>
+                                <p>Admiration has sir decisively excellence say everything inhabiting acceptance. Sooner settle add put you sudden him.</p>
+                                <a class="defult-btn sm-btn" href="#">read more</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= blog-part end =======-->
+        <!--======= brand-part start =======--
+        <section id="brand-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-center">
+                            <h2>Our Trusted Partners</h2>
+                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elity sed do eiusmod tempor inc ididunt labore east dolore magna you</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row active-brand">
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand1.png" alt="brand1"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand2.png" alt="brand2"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand3.png" alt="brand3"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand4.png" alt="brand4"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand5.png" alt="brand5"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand1.png" alt="brand1"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand2.png" alt="brand2"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand3.png" alt="brand3"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand4.png" alt="brand4"></a>
+                    </div>
+                    <div class="brand-item">
+                        <a href="#"><img src="images/brand/brand5.png" alt="brand5"></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--======= brand-part end =======-->
+    </main>
+    <!--======= footer start =======-->
+    <footer>
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-8">
+                        <div class="footer-widget">
+                            <div class="footer-logo">
+                                <a class="logo" href="#">
+                                    <img src="images/cadboxx-logo.png" alt="footer-logo">
+                                </a>
+                            </div>
+                            <p>We are cad-boxx.com and we create 3D models that are designed for assembly.</p>
+                            <div class="footer-icon">
+                                <a href="https://facebook.com/@ass3mbl3r/"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://twitter.com/fastfea/"><i class="fab fa-twitter"></i></a>
+                                <!--<a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-behance"></i></a>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-4 col-6">
+                        <div class="footer-widget">
+                            <h4>quick links</h4>
+                            <ul>
+                                <li><a href="#">about</a></li>
+                                <li><a href="#">services</a></li>
+                                <li><a href="#">news</a></li>
+                                <li><a href="#">blog</a></li>
+                                <li><a href="#">contact</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-sm-5 col-6">
+                        <div class="footer-widget">
+                            <h4>services</h4>
+                            <ul>
+                                <li><a href="https://cadboxxapp.netlify.app">Simulation & Animation</a></li>
+                                <li><a href="https://Sketchfab.com/fasteng/">3D Models</a></li>
+                                <li><a href="https://cadboxxapp.netlify.app">Wheel-it</a></li>
+                                <li><a href="https://cadboxxapp.netlify.app">Assembler</a></li>
+                                <li><a href="https://cad-boxx.com/">cadboxx SaaS</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-7">
+                        <div class="footer-widget">
+                            <h4>contact</h4>
+                            <ul class="contact">
+                                <li><i class="fas fa-map-marker-alt"></i></li>
+                                <li>
+                                    Tias Las Palmas, 35572
+                                </li>
+                            </ul>
+                            <ul class="contact">
+                                <li><i class="far fa-envelope"></i></li>
+                                <li>fasteng@cad-boxx.com</li>
+                            </ul>
+                            <ul class="contact">
+                                <li><i class="fas fa-phone"></i></li>
+                                <li class="no">
+                                    +34 631 821 452
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>Copyright © cadboxx. 2022 All Rights Reserved</p>
+            </div>
+        </div>
+    </footer>
+    <!--======= footer end =======-->
+    <!--======= js here =======-->
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/slick.min.js"></script>
+    <script src="js/venobox.min.js"></script>
+    <script src="js/mixitup.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/jquery.scrollUp.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        $(function() {
+            //mixitup js
+            var mixer = mixitup('.con');
+        });
+    </script>
 </body>
 </html>
